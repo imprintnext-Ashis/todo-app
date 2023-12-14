@@ -1,7 +1,16 @@
+import { useState } from "react";
 
 
 export default function List(props) {
   const { task, ondelete, onedit } = props;
+
+  const [show, setshow] = useState(false);
+  const [selectedTaskIndex, setSelectedTaskIndex] = useState(null);
+
+  const showpara = (index) => {
+    setshow(!show);
+    setSelectedTaskIndex(index);
+  };
 
   return (
     <>
@@ -24,9 +33,11 @@ export default function List(props) {
                   <input
                     type="text"
                     readOnly="readonly"
-                    value={taskItem}
+                    value={taskItem.todo}
                     className="form-control"
                   />
+                 {show && selectedTaskIndex === index && <p>{taskItem.desc}</p>}
+
                 </td>
                 <td >
                   <div style={{ gap: "25px", display: "flex", justifyContent: "center" }}>
@@ -44,6 +55,13 @@ export default function List(props) {
                       onClick={() => onedit(index)}
                     >
                       Edit
+                    </button>
+
+                    <button
+                    className="btn btn-success"
+                    onClick={() => showpara(index)}
+                    >
+                      Show Description
                     </button>
 
                   </div>

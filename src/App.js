@@ -9,14 +9,20 @@ import Alert from './Alert';
 function App() {
 
 
-  const [tasks, setTasks] = useState([]);
-  const [newTask, setNewTask] = useState('');
+  const [tasks, setTasks] = useState("");
+  const [newTask, setNewTask] = useState({
+    todo: '',
+    desc: '',
+  });
   const [editIndex, setEditIndex] = useState(null);
   const [confirmationMessage, setConfirmationMessage] = useState('');
  const[colors,setColors]  =useState("red")
 
   const addTask = () => {
-    if (newTask.trim() !== '') {
+    const todoValue = (newTask.todo || '').trim();
+
+
+    if (todoValue !== '') {
       if (editIndex !== null) {
         const edit = window.confirm('Are you sure you want to edit this task?');
   
