@@ -13,13 +13,13 @@ function App() {
   const [newTask, setNewTask] = useState('');
   const [editIndex, setEditIndex] = useState(null);
   const [confirmationMessage, setConfirmationMessage] = useState('');
+ const[colors,setColors]  =useState("red")
 
   const addTask = () => {
     if (newTask.trim() !== '') {
       if (editIndex !== null) {
-                    
-        const edit = window.confirm('Are you sure you want to delete this task?');
-
+        const edit = window.confirm('Are you sure you want to edit this task?');
+  
         if (edit) {
           const updatedTasks = [...tasks];
           updatedTasks[editIndex] = newTask;
@@ -34,13 +34,22 @@ function App() {
         setTasks([...tasks, newTask]);
       }
       setNewTask('');
+    } else {
+     
+      setEditIndex(null);
     }
   };
-  const edittask = (index) => {
+  
+  
+
+
+  const edittask = (index) => 
+  {
 
 
     setNewTask(tasks[index]);
     setEditIndex(index);
+    setColors("green")
 
 
   };
@@ -52,6 +61,8 @@ function App() {
       const updatedTasks = [...tasks];
       updatedTasks.splice(index, 1);
       setTasks(updatedTasks);
+      setNewTask('');
+      setColors("red")
       setConfirmationMessage('Task deleted successfully!');
       setTimeout(() => {
         setConfirmationMessage('');
@@ -66,9 +77,11 @@ function App() {
         setNewTask={setNewTask}
         addTask={addTask}
         editIndex={editIndex}
+        setedit={setEditIndex}
       />
       <Alert
         alert={confirmationMessage}
+        color={colors}
       />
       <List
         task={tasks}
