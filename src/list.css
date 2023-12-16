@@ -1,0 +1,29 @@
+.table {
+    margin: 20px auto;
+    width: 80%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead{
+    background-color: "#343a40";
+     color: "#fff"
+}
+td{
+    padding: "12px";
+    text-align: "left" 
+}
+input{
+    width: "100%";
+     border: "none";
+     padding: "8px";
+     border-radius: "4px"
+}
+.button{
+    display: flex;
+    justify-content: center;
+    
+     gap:  10px;
+}
